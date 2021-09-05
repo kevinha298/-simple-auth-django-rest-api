@@ -9,6 +9,13 @@ services:
       - 8000:8000
     volumes: 
       - ./djangoapp:/djangoapp
+    environment:
+      - SECRET_KEY=devsecretkey
+      - DEBUG=1 
+      - DB_HOST=db
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASS=postgres
     command: python manage.py runserver 0.0.0.0:8000
     depends_on:
       - db

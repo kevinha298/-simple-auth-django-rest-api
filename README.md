@@ -5,10 +5,10 @@ A shell of docker with django and postgresql containers for building other apps 
 
 1) Open git bash from local repository directory
 
-2) Clone project from git to local repositorydirectory:
+2) Clone project from remote git to local repositorydirectory:
 git clone https://github.com/kevinha298/django-postgres-docker.git
 
-3) Open open project in vs code:
+3) Open project in vs code:
 code .
 
 4) Create djangoapp folder at the root of the project to store Django files

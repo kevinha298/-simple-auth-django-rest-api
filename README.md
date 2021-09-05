@@ -3,34 +3,33 @@
 A shell of docker with django and postgresql containers for building other apps on.
 
 
-# Open git bash from local repository directory
+1) Open git bash from local repository directory
 
-# Clone project from git to local repositorydirectory:
+2) Clone project from git to local repositorydirectory:
 git clone https://github.com/kevinha298/django-postgres-docker.git
 
-# Open open project in vs code:
+3) Open open project in vs code:
 code .
 
-# Create djangoapp folder at the root of the project to store Django files
+4) Create djangoapp folder at the root of the project to store Django files
 
-# Create pgdb folder at the root of the project to store Postgresql data
+5) Create pgdb folder at the root of the project to store Postgresql data
 
-# Build an image for the first time:
+6) Build a docker image of the containers for the first time and create a Django app:
 docker-compose run --rm app sh -c "django-admin startproject MainApp ."
 
-# Start up docker-compose:
+7) Start up docker containers from the new built docker image above:
 docker-compose up
 
-# Test django default site:
+8) Test django default site:
 http://127.0.0.1:8000/
 
-# Stop docker-compose:
+9) Stop docker containers to make changes to the containers' content:
 docker-compose down
 
+10) Delete db.sqlite3 file in the djangoapp folder
 
-# Delete db.sqlite3 file in the djangoapp folder
-
-# Replace "DATABASES" section in the ./djangoapp/MainApp/settings.py file with the following.
+11) Replace "DATABASES" section in the ./djangoapp/MainApp/settings.py file with the following:
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -41,45 +40,45 @@ DATABASES = {
     }
 }
 
-# Add "'rest_framework'," in the "INSTALLED_APPS" section of the ./djangoapp/MainApp/settings.py file.
+12) In the "INSTALLED_APPS" section of the ./djangoapp/MainApp/settings.py file, add the following line:
+'rest_framework',
 
-# In the ./djangoapp/MainApp/settings.py file do the followings:
--- Add "import os" on the top
--- Update "SECRET_KEY" variable as:
-    SECRET_KEY = os.environ.get('SECRET_KEY')
--- Update "DEBUG" variable as:
-    DEBUG = bool(int(os.environ.get('DEBUG', 0)))
--- Add "ALLOWED_HOSTS" variable as:
-    ALLOWED_HOSTS.extend(
-        filter(
-            None,
-            os.environ.get('ALLOWED_HOSTS', '').split(','),
-        )
+13) In the ./djangoapp/MainApp/settings.py file do the following on the top:
+import os
+
+14) In the ./djangoapp/MainApp/settings.py file update "SECRET_KEY" variable as following:
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
+15) In the ./djangoapp/MainApp/settings.py file update "DEBUG" variable as following:
+DEBUG = bool(int(os.environ.get('DEBUG', 0)))
+
+16) In the ./djangoapp/MainApp/settings.py file add "ALLOWED_HOSTS" variable as following:
+ALLOWED_HOSTS.extend(
+    filter(
+        None,
+        os.environ.get('ALLOWED_HOSTS', '').split(','),
     )
+)
 
-# Migrate django objects and connect to postgresql database
+17) Migrate django objects and connect to postgresql database: 
 docker-compose run app python manage.py migrate
 
-# Start up docker-compose:
+18) Start up docker containers:
 docker-compose up
 
-# Open another terminal session for the following instructions (get into the app service of the django_app container to create a super user).
+19) Open another terminal session for the following instructions (get into the app service of the django_app container to create a super user).
 docker-compose exec app sh
 
+20) Once inside the app service of the django_app container, create a super user and enter username, email address, and password
 python manage.py createsuperuser
 
-# Enter username
 
-# Enter user email address
-
-# Enter user password
-
-# Go to admin site
+21) Go to admin site to test:
 http://127.0.0.1:8000/admin
 
-# Enter username and password for admin to test
+22) Enter username and password for admin to test
 
-# To rebuild image created above after making some changes:
+23) To rebuild image created above after making any change to the containers in the docker-compose.yml file:
 docker-compose build
 
 

@@ -131,6 +131,7 @@ dmypy.json
 instructions.txt
 zDockerScreenshots/
 
-/pgdb
-/djangoapp
+DevelopmentInstructions.txt
+
+pgdb/
 

@@ -39,7 +39,5 @@ http://127.0.0.1:8000/admin
 
 12) Enter username and password for admin to test
 
-13) To rebuild image created above after making any change to the containers in the docker-compose.yml file:
-docker-compose build
 
 

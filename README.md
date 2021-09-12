@@ -1,4 +1,4 @@
-# django-postgres-docker
+# simple-auth-django-rest-api
 A shell of docker with django and postgresql containers for building other apps on.
 
 

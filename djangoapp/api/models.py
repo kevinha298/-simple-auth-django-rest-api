@@ -19,3 +19,6 @@ class Users(models.Model):
         return path
     
     resume = models.ImageField(upload_to=upload_file, null=True, blank=True)
+
+    def __str__(self):
+        return f'{self.employeeID} - {self.employeeName}'

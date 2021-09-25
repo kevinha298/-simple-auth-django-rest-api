@@ -17,22 +17,32 @@ class UserList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class UserDetail(APIView):
-    def get(self, request, employeeID):
+
+    def get_user(self, employeeID):
         try:
             model = Users.objects.get(id=employeeID)
+            return model
         except Users.DoesNotExist:
+            return
+
+    def get(self, request, employeeID):
+        if not self.get_user(employeeID):
             return Response(f'User with ID: {employeeID} is not found in database.', status=status.HTTP_404_NOT_FOUND)
-        serializer = UserSerializer(model)
+        serializer = UserSerializer(self.get_user(employeeID))
         return Response(serializer.data)
 
     def put(self, request, employeeID):
-        try:
-            model = Users.objects.get(id=employeeID)
-        except Users.DoesNotExist:
+        if not self.get_user(employeeID):
             return Response(f'User with ID: {employeeID} is not found in database.', status=status.HTTP_404_NOT_FOUND)
-
-        serializer = UserSerializer(model, data=request.data)
+        serializer = UserSerializer(self.get_user(employeeID), data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, employeeID):
+        if not self.get_user(employeeID):
+            return Response(f'User with ID: {employeeID} is not found in database.', status=status.HTTP_404_NOT_FOUND)
+        model = self.get_user(employeeID)
+        model.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

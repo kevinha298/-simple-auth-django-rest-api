@@ -22,11 +22,11 @@ def get_data():
         print(e)
 
 #create new data
-def create_new(count):
+def create_new(seq):
     url = f'{URL}/api/users_list/'
     header = {'Authorization': f'Token {get_token()}'}
     data = {
-        'employeeID': f'HQ00{count}', 'name': f'Test user {count}', 'ranking': 6.8 + count, 'age': 68 + count
+        'employeeID': f'HQ00{seq}', 'employeeName': f'Test user {seq}', 'ranking': 6.8 + seq, 'age': 68 + seq
     }
     response = requests.post(url, data = data, headers = header)
     print(response.text, response.status_code)
@@ -36,7 +36,7 @@ def edit_data(employeeID):
     url = f'{URL}/api/users_list/{employeeID}/'
     header = {'Authorization': f'Token {get_token()}'}
     data = {
-        'name': f'Test user 17', 'ranking': 8.8, 'age': 88
+        'employeeName': f'Test user 17', 'ranking': 8.8, 'age': 88
     }
     response = requests.put(url, data = data, headers = header)
     print(response.text, response.status_code)
@@ -53,13 +53,17 @@ if __name__ == "__main__":
 
     # print(display_token())
 
-    get_data()
+    # get_data()
+
+    # for seq in range(10):
+    #     create_new(seq)
+
+    for seq in range(20,30):
+        create_new(seq)
 
     #edit_data(7)
 
-    # create_new()
-    # for e in range(10):
-    # create_new(e)
+
 
     # for e in range(11):
     # if e > 2:

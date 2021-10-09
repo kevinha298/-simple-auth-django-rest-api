@@ -32,11 +32,11 @@ def create_new(seq):
     print(response.text, response.status_code)
 
 #edit data
-def edit_data(employeeID):
+def edit_data(employeeID, employeeName, ranking, age):
     url = f'{URL}/api/users_list/{employeeID}/'
     header = {'Authorization': f'Token {get_token()}'}
     data = {
-        'employeeName': f'Test user 17', 'ranking': 8.8, 'age': 88
+        'employeeName': f'{employeeName}', 'ranking': {ranking}, 'age': {age}
     }
     response = requests.put(url, data = data, headers = header)
     print(response.text, response.status_code)
@@ -58,10 +58,14 @@ if __name__ == "__main__":
     # for seq in range(10):
     #     create_new(seq)
 
-    for seq in range(20,30):
-        create_new(seq)
+    # for seq in range(20,30):
+    #     create_new(seq)
 
-    #edit_data(7)
+    employeeID = 12 
+    employeeName = 'Test user 12' 
+    ranking = 8.8
+    age = 68
+    edit_data(employeeID, employeeName, ranking, age)
 
 
 

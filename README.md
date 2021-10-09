@@ -1,6 +1,5 @@
 # simple-auth-django-rest-api
-A shell of docker with django and postgresql containers for building other apps on.
-
+An API with  basic Authentication using docker containers with django and postgresql containers.
 
 1) Open git bash from local repository directory
 
@@ -32,7 +31,6 @@ docker-compose exec app sh
 
 10) Once inside the app service of the django_app container, create a super user and enter username, email address, and password
 python manage.py createsuperuser
-
 
 11) Go to admin site to test:
 http://127.0.0.1:8000/admin

@@ -1,6 +1,10 @@
 import requests
 
-URL = 'http://127.0.0.1:8000'
+#Display Token
+def display_token():
+    url = f'{URL}/api/auth/'
+    response = requests.post(url, data = {'username': 'admin', 'password': 'app123'})
+    return response.json()
 
 #Get auth token
 def get_token():
@@ -17,8 +21,6 @@ def get_data():
     for e in emp_data:
         print(e)
 
-get_data()
-
 #create new data
 def create_new(count):
     url = f'{URL}/api/users_list/'
@@ -28,10 +30,6 @@ def create_new(count):
     }
     response = requests.post(url, data = data, headers = header)
     print(response.text, response.status_code)
-
-#create_new()
-#for e in range(10):
-#    create_new(e)
 
 #edit data
 def edit_data(employeeID):
@@ -43,8 +41,6 @@ def edit_data(employeeID):
     response = requests.put(url, data = data, headers = header)
     print(response.text, response.status_code)
 
-#edit_data(7)
-
 #delete data
 def delete_data(employeeID):
     url = f'{URL}/api/users_list/{employeeID}/'
@@ -52,7 +48,19 @@ def delete_data(employeeID):
     response = requests.delete(url, headers = header)
     print(response.text, response.status_code)
 
+if __name__ == "__main__":
+    URL = 'http://127.0.0.1:8000'
 
-#for e in range(11):
-#    if e > 2:
-#        delete_data(e)
+    # print(display_token())
+
+    get_data()
+
+    #edit_data(7)
+
+    # create_new()
+    # for e in range(10):
+    # create_new(e)
+
+    # for e in range(11):
+    # if e > 2:
+    #     delete_data(e)

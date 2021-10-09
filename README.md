@@ -4,7 +4,7 @@ An API with  basic Authentication using docker containers with django and postgr
 1) Open git bash from local repository directory
 
 2) Clone project from remote git to local repositorydirectory:
-git clone https://github.com/kevinha298/django-postgres-docker.git
+git clone https://github.com/kevinha298/simple-auth-django-rest-api.git
 
 3) Open project in vs code:
 code .
@@ -31,6 +31,8 @@ docker-compose exec app sh
 
 10) Once inside the app service of the django_app container, create a super user and enter username, email address, and password
 python manage.py createsuperuser
+username: admin
+password: app123
 
 11) Go to admin site to test:
 http://127.0.0.1:8000/admin

@@ -61,14 +61,12 @@ if __name__ == "__main__":
     # for seq in range(20,30):
     #     create_new(seq)
 
-    employeeID = 12 
-    employeeName = 'Test user 12' 
-    ranking = 8.8
-    age = 68
-    edit_data(employeeID, employeeName, ranking, age)
+    # employeeID = 12 
+    # employeeName = 'Test user 12' 
+    # ranking = 8.8
+    # age = 68
+    # edit_data(employeeID, employeeName, ranking, age)
 
-
-
-    # for e in range(11):
-    # if e > 2:
-    #     delete_data(e)
+    for e in range(20):
+        if e > 10:
+            delete_data(e)

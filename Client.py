@@ -51,22 +51,19 @@ def delete_data(employeeID):
 if __name__ == "__main__":
     URL = 'http://127.0.0.1:8000'
 
-    # print(display_token())
+    print(display_token())
 
-    # get_data()
+    get_data()
 
-    # for seq in range(10):
-    #     create_new(seq)
+    for seq in range(1,12):
+        create_new(seq)
 
-    # for seq in range(20,30):
-    #     create_new(seq)
-
-    # employeeID = 12 
-    # employeeName = 'Test user 12' 
-    # ranking = 8.8
-    # age = 68
-    # edit_data(employeeID, employeeName, ranking, age)
+    employeeID = 8
+    employeeName = 'Test user 98' 
+    ranking = 8.8
+    age = 68
+    edit_data(employeeID, employeeName, ranking, age)
 
     for e in range(20):
-        if e > 10:
+        if e > 9:
             delete_data(e)

@@ -19,14 +19,13 @@ docker-compose run app python manage.py migrate
 docker-compose down
 docker-compose build
 
-7) On the second terminal session in vs code, start the containers:
+7) On the first terminal session in vs code, start the containers:
 docker-compose up
 
 8) Test django default site:
-http://127.0.0.1:8000/
+http://127.0.0.1:8000/admin/
 
-
-9) Open another terminal session for the following instructions (get into the app service of the django_app container to create a super user).
+9) On the second terminal session for the following instructions (get into the app service of the django_app container to create a super user).
 docker-compose exec app sh
 
 10) Once inside the app service of the django_app container, create a super user and enter username, email address, and password
@@ -34,10 +33,10 @@ python manage.py createsuperuser
 username: admin
 password: app123
 
-11) Go to admin site to test:
+11) Go to admin site and log in with the username and password above to test:
 http://127.0.0.1:8000/admin
 
-12) Enter username and password for admin to test
+12) Use the Client.py app within the project to test different api calls.
 
 
 
